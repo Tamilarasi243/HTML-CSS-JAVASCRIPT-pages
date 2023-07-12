@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Words Counter</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        
+        .container {
+            background-color: rgb(10, 58, 42);
+            background-size: cover;
+            width: 100%;
+            height: 100vh;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .box {
+            background-color: rgb(226, 226, 159, 0.7);
+            width: 400px;
+            height: 550px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            padding: 0.5em;
+            border-radius: 10px;
+        }
+        
+        .comments textarea {
+            background-color: rgba(0, 0, 0, 0.9);
+            width: 320px;
+            height: 300px;
+            font-size: 1.5em;
+            color: bisque;
+            font-style: oblique;
+            font-variant: small-caps;
+            text-align: justify;
+            letter-spacing: 2px;
+            word-spacing: 2px;
+            overflow-y: scroll;
+            border-radius: 10px;
+        }
+        
+        textarea {
+            max-width: 320px;
+            max-height: 300px;
+            min-width: 320px;
+            min-height: 300px;
+        }
+        
+        .heading h1 {
+            font-weight: bolder;
+            font-style: oblique;
+            font-variant: small-caps;
+            letter-spacing: 3px;
+            font-size: 3em;
+        }
+        
+        .result {
+            margin-top: 1em;
+            font-weight: bolder;
+            font-style: oblique;
+            font-variant: small-caps;
+            letter-spacing: 3px;
+            font-size: 2em;
+            color: black;
+        }
+        
+        @media(max-width:600px) {
+            .container {
+                background-size: cover;
+                width: 100%;
+                height: 100vh;
+                padding: 1em;
+            }
+            .box {
+                width: 90%;
+                height: 600px;
+                padding: 1em;
+                border-radius: 10px;
+            }
+            .comments textarea {
+                width: 100%;
+                height: 150px;
+                font-size: 1.2em;
+                overflow-y: auto;
+                border-radius: 10px;
+            }
+            .result {
+                margin-top: 2.3em;
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="box">
+            <div class="heading">
+                <h1>Words Counter</h1>
+            </div>
+            <div class="comments">
+                <textarea type="text" id="texts" oninput="counter()"></textarea>
+            </div>
+
+            <div class="result" id="res"></div>
+
+
+        </div>
+    </div>
+    <script>
+        function counter() {
+            const stringValue = document.getElementById('texts').value
+            const wordCount = stringValue.split(' ')
+            const filteredWords = wordCount.filter(word => word !== '');
+            const results = document.getElementById('res')
+            results.innerHTML = filteredWords.length + ' words'
+        }
+    </script>
+</body>
+
+</html>
