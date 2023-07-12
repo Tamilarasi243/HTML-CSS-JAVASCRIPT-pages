@@ -1,1 +1,1 @@
-# HTML-CSS-JAVASCRIPT-pages
+# HTML-CSS-JAVASCRIPT-simple-pages
