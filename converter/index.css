@@ -1,0 +1,93 @@
+body {
+    font-family: 'Courier New', Courier, monospace;
+    margin: 0px;
+    font-style: oblique;
+    font-variant: small-caps;
+}
+
+.backContainer {
+    background-color: rgb(231, 186, 130);
+    height: 100vh;
+    width: 100%;
+    margin: 0px auto;
+    background-size: cover;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 400px;
+    height: 410px;
+    padding: 1em;
+    background-color: rgba(10, 10, 10, 0.9);
+    border-radius: 2%;
+}
+
+.inputs h1 {
+    font-size: 3em;
+    color: rgb(221, 182, 124);
+    font-weight: bolder;
+    letter-spacing: 3px;
+}
+
+form input {
+    background-color: black;
+    font-variant: small-caps;
+    letter-spacing: 2px;
+    text-align: center;
+    color: rgb(221, 182, 124);
+    font-style: oblique;
+    font-size: 1em;
+    padding: 0.5em;
+    border: 2px inset black;
+    font-weight: bolder;
+}
+
+.inputBox input {
+    margin-top: 2em;
+    background-color: black;
+    font-variant: small-caps;
+    letter-spacing: 2px;
+    text-align: center;
+    color: rgb(221, 182, 124);
+    font-style: oblique;
+    font-size: 1em;
+    padding: 0.5em;
+    border: 2px inset black;
+    font-weight: bolder;
+}
+
+.button button {
+    margin-top: 2em;
+    background-color: rgba(10, 10, 10, 0.479);
+    color: rgb(231, 145, 15);
+    font-variant: small-caps;
+    letter-spacing: 2px;
+    font-style: oblique;
+    font-size: 1em;
+    padding: 0.5em;
+    border: 2px inset black;
+    font-weight: bolder;
+}
+
+.showResult {
+    margin-top: 2em;
+    color: rgb(221, 182, 124);
+    padding: 1em;
+    font-size: 1em;
+    font-weight: bolder;
+    letter-spacing: 2px;
+}
+
+@media (max-width: 600px) {
+    .container {
+        max-width: 90%;
+    }
+}

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Converter</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <div class="backContainer">
+        <div class="container">
+            <div class="inputs">
+                <h1>...Converter...</h1>
+            </div>
+            <div class="options">
+                <form>
+                    <input list="converter" placeholder="Choose options" id="optionId" oninput="convert()">
+                    <datalist id="converter">
+                        <option value="cm to meter"></option>
+                        <option value="cm to kilometer"></option>
+                        <option value="cm to centimeter"></option>
+                        <option value="cm to millimeter"></option>
+                        <option value="cm to micrometer"></option>
+                        <option value="cm to nanometer"></option>
+                        <option value="cm to mile"></option>
+                        <option value="cm to yard"></option>
+                        <option value="cm to foot"></option>
+                        <option value="cm to inch"></option>
+                        <option value="cm to lightyear"></option>
+                        </datalist>
+
+                </form>
+            </div>
+            <div class="inputBox">
+                <input type="text" id="values" placeholder="enter values">
+            </div>
+            <div class="button">
+                <button type="submit" onclick="convert()">Convert</button>
+            </div>
+            <div class="showResult" id="results">
+
+            </div>
+        </div>
+    </div>
+    <script>
+        function convert() {
+            var inputs = document.getElementById('optionId').value
+            var convertedValues = converterLogic(inputs)
+            finalDisplay(inputs, convertedValues)
+        }
+
+        function converterLogic(inputs) {
+            var inputValues = document.getElementById('values').value
+            var valueResult = 0
+            if (inputs == 'cm to meter') {
+                valueResult = (Number(inputValues) / 100).toFixed(3)
+                return valueResult + ' meter'
+            }
+            if (inputs == 'cm to kilometer') {
+                valueResult = (Number(inputValues) / 100000).toFixed(3)
+                return valueResult + ' kilometer'
+            }
+            if (inputs == 'cm to centimeter') {
+                valueResult = (Number(inputValues)).toFixed(3)
+                return valueResult + ' centimeter'
+            }
+            if (inputs == 'cm to millimeter') {
+                valueResult = (Number(inputValues) * 10).toFixed(3)
+                return valueResult + ' millimeter'
+            }
+            if (inputs == 'cm to micrometer') {
+                valueResult = (Number(inputValues) * 10000).toFixed(3)
+                return valueResult + ' micrometer'
+            }
+            if (inputs == 'cm to nanometer') {
+                valueResult = (Number(inputValues) * 10000000).toFixed(3)
+                return valueResult + ' nanometer'
+            }
+            if (inputs == 'cm to mile') {
+                valueResult = (Number(inputValues) / 160934.4).toFixed(3)
+                return valueResult + ' miles'
+            }
+            if (inputs == 'cm to yard') {
+                valueResult = (Number(inputValues) * 0.010936).toFixed(3)
+                return valueResult + ' yards'
+            }
+            if (inputs == 'cm to foot') {
+                valueResult = (Number(inputValues) * 0.0328).toFixed(3)
+                return valueResult + ' feet'
+            }
+            if (inputs == 'cm to inch') {
+                valueResult = (Number(inputValues) / 2.54).toFixed(3)
+                return valueResult + ' inches'
+            }
+            if (inputs == 'cm to lightyear') {
+                valueResult = 'Beyond the limit'
+                return valueResult
+            }
+        }
+
+        function finalDisplay(inputs, convertedValues) {
+            const finalResult = document.getElementById('results')
+            finalResult.innerHTML = convertedValues
+        }
+    </script>
+</body>
+
+</html>
