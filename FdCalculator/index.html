@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FD Calculator</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <div class="backContainer">
+        <div class="container">
+            <div class="inputs">
+                <h1>FD Calculator</h1>
+            </div>
+
+            <div class="inputBox">
+                <input type="text" id="depositAmount" placeholder="Deposit Amount">
+            </div>
+            <div class="inputBox">
+                <input type="text" id="period" placeholder="Period (in years)">
+            </div>
+            <div class="inputBox">
+                <input list="freq" id="compound" placeholder="Compound Frequency">
+                <datalist id="freq">
+                    <option value="Monthly payout"></option>
+                    <option value="Quarterly payout"></option>
+                    <option value="Half Yearly payout"></option>
+                    <option value="Yearly payout"></option>
+                </datalist>
+            </div>
+
+            <div class="button">
+                <button type="submit" onclick="convert()">Calculate</button>
+            </div>
+            <br>
+            <h3>...Maturity Amount...</h3>
+            <div class="showResult" id="results"></div>
+            <h3>...Interest Amount...</h3>
+            <div class="showResult1" id="results2"></div>
+        </div>
+    </div>
+
+    <script>
+        function convert() {
+            const depositAmount = Number(document.getElementById('depositAmount').value);
+
+            let res = logics(depositAmount);
+            let maturityAmount = res[0];
+            let deposit = res[1];
+            finalDisplay(maturityAmount, deposit);
+        }
+
+        function logics(depositAmount) {
+            let period = Number(document.getElementById('period').value);
+            let frequency = document.getElementById('compound').value;
+            let interest = 6;
+
+            let freq = 0;
+            if (frequency === 'Monthly payout') {
+                freq = 12;
+            } else if (frequency === 'Quarterly payout') {
+                freq = 4;
+            } else if (frequency === 'Half Yearly payout') {
+                freq = 2;
+            } else if (frequency === 'Yearly payout') {
+                freq = 1;
+            }
+
+            depositAmount *= (freq * period);
+            console.log(freq, period, depositAmount)
+            let maturityAmount = depositAmount * Math.pow((1 + (interest / (freq * 100))), (freq * period));
+
+            return [maturityAmount, depositAmount];
+        }
+
+        function finalDisplay(maturityAmount, depositAmount) {
+            let res = document.querySelector('#results');
+            let res1 = document.querySelector('#results2');
+            let interestAmount = Number(maturityAmount) - depositAmount;
+            res.innerHTML = "Rs." + maturityAmount.toFixed(2);
+            res1.innerHTML = "Rs." + interestAmount.toFixed(2);
+
+        }
+    </script>
+</body>
+
+</html>
